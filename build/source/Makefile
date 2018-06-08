@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/judith/Dokumente/Uni/Programmiersprachen/Übung/Beleg04
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -125,6 +125,48 @@ aufgabe1/fast:
 	cd /home/judith/Dokumente/Uni/Programmiersprachen/Übung/Beleg04/programmiersprachen-aufgabenblatt-4/build && $(MAKE) -f source/CMakeFiles/aufgabe1.dir/build.make source/CMakeFiles/aufgabe1.dir/build
 .PHONY : aufgabe1/fast
 
+# Convenience name for target.
+source/CMakeFiles/TestList.dir/rule:
+	cd /home/judith/Dokumente/Uni/Programmiersprachen/Übung/Beleg04/programmiersprachen-aufgabenblatt-4/build && $(MAKE) -f CMakeFiles/Makefile2 source/CMakeFiles/TestList.dir/rule
+.PHONY : source/CMakeFiles/TestList.dir/rule
+
+# Convenience name for target.
+TestList: source/CMakeFiles/TestList.dir/rule
+
+.PHONY : TestList
+
+# fast build rule for target.
+TestList/fast:
+	cd /home/judith/Dokumente/Uni/Programmiersprachen/Übung/Beleg04/programmiersprachen-aufgabenblatt-4/build && $(MAKE) -f source/CMakeFiles/TestList.dir/build.make source/CMakeFiles/TestList.dir/build
+.PHONY : TestList/fast
+
+TestList.o: TestList.cpp.o
+
+.PHONY : TestList.o
+
+# target to build an object file
+TestList.cpp.o:
+	cd /home/judith/Dokumente/Uni/Programmiersprachen/Übung/Beleg04/programmiersprachen-aufgabenblatt-4/build && $(MAKE) -f source/CMakeFiles/TestList.dir/build.make source/CMakeFiles/TestList.dir/TestList.cpp.o
+.PHONY : TestList.cpp.o
+
+TestList.i: TestList.cpp.i
+
+.PHONY : TestList.i
+
+# target to preprocess a source file
+TestList.cpp.i:
+	cd /home/judith/Dokumente/Uni/Programmiersprachen/Übung/Beleg04/programmiersprachen-aufgabenblatt-4/build && $(MAKE) -f source/CMakeFiles/TestList.dir/build.make source/CMakeFiles/TestList.dir/TestList.cpp.i
+.PHONY : TestList.cpp.i
+
+TestList.s: TestList.cpp.s
+
+.PHONY : TestList.s
+
+# target to generate assembly for a file
+TestList.cpp.s:
+	cd /home/judith/Dokumente/Uni/Programmiersprachen/Übung/Beleg04/programmiersprachen-aufgabenblatt-4/build && $(MAKE) -f source/CMakeFiles/TestList.dir/build.make source/CMakeFiles/TestList.dir/TestList.cpp.s
+.PHONY : TestList.cpp.s
+
 aufgabe1.o: aufgabe1.cpp.o
 
 .PHONY : aufgabe1.o
@@ -158,9 +200,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... aufgabe1"
 	@echo "... edit_cache"
+	@echo "... aufgabe1"
+	@echo "... rebuild_cache"
+	@echo "... TestList"
+	@echo "... TestList.o"
+	@echo "... TestList.i"
+	@echo "... TestList.s"
 	@echo "... aufgabe1.o"
 	@echo "... aufgabe1.i"
 	@echo "... aufgabe1.s"

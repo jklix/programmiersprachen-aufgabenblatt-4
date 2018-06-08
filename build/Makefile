@@ -149,6 +149,19 @@ aufgabe1/fast:
 	$(MAKE) -f source/CMakeFiles/aufgabe1.dir/build.make source/CMakeFiles/aufgabe1.dir/build
 .PHONY : aufgabe1/fast
 
+#=============================================================================
+# Target rules for targets named TestList
+
+# Build rule for target.
+TestList: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TestList
+.PHONY : TestList
+
+# fast build rule for target.
+TestList/fast:
+	$(MAKE) -f source/CMakeFiles/TestList.dir/build.make source/CMakeFiles/TestList.dir/build
+.PHONY : TestList/fast
+
 external/nanovg/src/nanovg.o: external/nanovg/src/nanovg.c.o
 
 .PHONY : external/nanovg/src/nanovg.o
@@ -187,6 +200,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... glfw"
 	@echo "... aufgabe1"
+	@echo "... TestList"
 	@echo "... external/nanovg/src/nanovg.o"
 	@echo "... external/nanovg/src/nanovg.i"
 	@echo "... external/nanovg/src/nanovg.s"
