@@ -180,6 +180,21 @@ class List
         }
     }
 
+    // Aufgabe 4.4
+
+    void clear()
+    {
+        if(empty() == true)
+        {
+            std::cout <<"Die Liste ist bereits leer." << "\n";
+        }
+        while(size_ != 0)
+        {
+            pop_back();
+        }
+    }
+
+
 
 
 
