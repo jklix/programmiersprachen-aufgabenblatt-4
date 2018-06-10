@@ -166,10 +166,25 @@ TEST_CASE("move constructor", "[constructor]")
     REQUIRE(4 == list2.size());   
 }
 
+//Aufgabe 4.14
+TEST_CASE("initializer_list", "[list]")
+{
+    List<int> int_list {9, 5, 38, 100};
+    List<int> int_list2 {1,2};
+    List<int> int_list3 {5,6};
 
+    REQUIRE(100 == int_list.last());
+
+    auto merge_list = int_list2 + int_list3;
+    List<int> int_list4 {1,2,5,6};
+    REQUIRE(int_list4 == merge_list);
+    REQUIRE(1 == merge_list.front());
+    REQUIRE(6 == merge_list.last());
+}
 
 int main (int argc, char *argv[])
 {
+    auto l = List<int> {1, 2, 3, 4, 5} + List<int> {6, 7, 8, 9};
     return Catch::Session().run(argc, argv);
 }
 

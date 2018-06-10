@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <list>
 #include <iostream>
+#include<initializer_list>
 
 //List.hpp
 
@@ -150,6 +151,18 @@ class List
         list.size_ = 0;
         list.first_ = nullptr;
         list.last_ = nullptr;
+    }
+
+    //Aufgabe 4.14
+    List(std::initializer_list<T> const& list):
+    size_{0},
+    first_{nullptr},
+    last_{nullptr}
+    {
+        for (auto i = list.begin(); i != list.end(); ++i)
+        {
+            push_back(*i);
+        }
     }
 
     
@@ -411,6 +424,20 @@ template <typename T> List<T> reverse (List<T> const& l)
 }
 
 
+//Aufgabe 4.14
+template <typename T> List<T> operator + (List<T> const& list1, List<T> const& list2)
+{
+    List<T> l;
+    for (auto i = list1.begin(); i != list1.end(); ++i)
+    {
+        l.push_back(std::move(*i));
+    }
+    for (auto i = list2.begin(); i != list2.end(); ++i)
+    {
+        l.push_back(std::move(*i));
+    }
+    return l;
+}
 
 
 
