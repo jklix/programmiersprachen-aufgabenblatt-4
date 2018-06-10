@@ -140,6 +140,18 @@ class List
         }
     }
 
+    //Aufgabe 4.13
+    //Move Constructor
+    List(List<T>&& list):
+    size_(list.size()),
+    first_(list.first_),
+    last_(list.last_)
+    {
+        list.size_ = 0;
+        list.first_ = nullptr;
+        list.last_ = nullptr;
+    }
+
     
 
     // Destruktor
