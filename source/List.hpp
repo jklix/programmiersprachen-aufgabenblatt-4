@@ -291,7 +291,38 @@ class List
     ListNode <T>* last_;
 };
 
+//Aufgabe 4.7
+template <typename T> bool operator == (List<T> const& xs, List<T> const& ys)
+{
+    if(xs.size() != ys.size())
+    {
+        return false;
+    }
+    else
+    {
+        auto i = xs.begin();
+        auto j = ys.begin();
 
+        for(int k = 0; k < xs.size(); ++k)
+        {
+            if(i != j)
+            {
+                return false;
+            }
+            else
+            {
+                ++i;
+                ++j;
+            }                        
+        }
+        return true;
+    }
+}
+
+template <typename T> bool operator != (List<T> const& xs, List<T> const& ys)
+{
+    return !(xs == ys);
+} 
 
 
 
