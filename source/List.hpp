@@ -330,6 +330,17 @@ class List
         }
     }
 
+    //Aufgabe 4.12
+    List<T>& operator = (List<T> l)
+    {
+        clear();
+        for (auto i = l.begin(); i != l.end(); ++i)
+        {
+            push_back(*i);
+        }
+        return *this;
+    }    
+
 
 
 
@@ -386,6 +397,7 @@ template <typename T> List<T> reverse (List<T> const& l)
     list.reverse();
     return list;
 }
+
 
 
 
