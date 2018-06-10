@@ -290,6 +290,24 @@ class List
     }
 
 
+    //Aufgabe 4.9
+    void insert (ListIterator<T> const& position, T const& object)
+    {
+        auto p = position.get_node();
+        if(p -> prev != nullptr)
+        {
+            ListNode<T>* node = new ListNode<T> {object, p -> prev, p};
+            p -> prev -> next = node;
+            p -> prev = node;
+        }
+        else
+        {
+            push_front(object);
+        }
+        ++size_;
+    }
+
+
 
 
 
