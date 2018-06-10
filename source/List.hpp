@@ -22,9 +22,73 @@ template <typename T>
 class ListIterator
 {
     public:
+    using Self = ListIterator<T>;
+
+    using value_type = T;
+    using pointer = T*;
+    using reference = T&;
+    using difference_type = ptrdiff_t;
+    using iterator_category = std::bidirectional_iterator_tag;
+
+    //Standardkonstruktor
+    ListIterator():
+    node {nullptr}
+    {}
+
+    ListIterator(ListNode<T>* n):
+    node {n}
+    {}
+
+    reference operator* () const //Wert von Node
+    {
+        return node -> value;
+    }
+
+    pointer operator -> () const //Adresse des Wertes
+    {
+        return &(node -> value);
+    }
+
+    Self& operator ++ () //Iterator weitersetzen  /++i
+    {
+        node = node -> next;
+        return *this;
+    }
+
+    Self operator ++ (int) //Iterator weitersetzen altes ausgeben /i++
+    {
+        Self temp = *this;
+        ++(*this);
+        return temp;
+    }
+
+    bool operator == (Self const& x) const //vergleich ob 2 nodes die gleiche Adresse haben
+    {
+        return node == x.get_node();
+
+    }
+
+    bool operator != (Self const& x) const
+    {
+        return node != x.get_node();
+    }
+
+    Self next() const 
+    {
+        if(node)
+            return ListIterator(node -> next);
+        else
+            return ListIterator(nullptr);
+    }
+    
+    ListNode <T>* get_node() const
+    {
+        return node;
+    }
 
 
     private:
+    //the Node the Iterator is pointing to
     ListNode <T>* node;
 };
 
@@ -63,6 +127,12 @@ class List
     first_{nullptr},
     last_{nullptr}
     {}
+
+    // Destruktor
+    ~List()
+    {
+        clear();
+    }
     
     bool empty() const
     {
