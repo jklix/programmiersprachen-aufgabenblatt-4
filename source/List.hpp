@@ -308,6 +308,29 @@ class List
     }
 
 
+    //Aufgabe 4.10
+
+    void reverse()
+    {
+        ListNode<T>* node = first_;
+        ListNode<T>* temp = nullptr;
+
+        while(node != nullptr)
+        {
+            temp = node -> next;
+            node -> next = node -> prev;
+            node -> prev = temp;
+
+            if(temp == nullptr)
+            {
+                last_ = first_;
+                first_ = node;
+            }
+            node = temp;
+        }
+    }
+
+
 
 
 
@@ -355,6 +378,14 @@ template <typename T> bool operator != (List<T> const& xs, List<T> const& ys)
 {
     return !(xs == ys);
 } 
+
+//Aufgabe 4.10
+template <typename T> List<T> reverse (List<T> const& l)
+{
+    List<T> list(l);
+    list.reverse();
+    return list;
+}
 
 
 
