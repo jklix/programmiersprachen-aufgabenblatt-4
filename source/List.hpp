@@ -128,6 +128,20 @@ class List
     last_{nullptr}
     {}
 
+    //Copy Constructor
+    List(List<T> const& list):
+    size_{0},
+    first_{nullptr},
+    last_{nullptr}
+    {
+        for(auto i = list.begin(); i != list.end(); ++i)
+        {
+            push_back(*i);
+        }
+    }
+
+    
+
     // Destruktor
     ~List()
     {
@@ -249,7 +263,7 @@ class List
             std::cout << "Liste ist bereits leer";
         }
     }
-
+    
     // Aufgabe 4.4
 
     void clear()
@@ -300,12 +314,12 @@ template <typename T> bool operator == (List<T> const& xs, List<T> const& ys)
     }
     else
     {
-        auto i = xs.begin();
-        auto j = ys.begin();
+        ListIterator<T> i = xs.begin();
+        ListIterator<T> j = ys.begin();
 
         for(int k = 0; k < xs.size(); ++k)
         {
-            if(i != j)
+            if(*i != *j)
             {
                 return false;
             }
