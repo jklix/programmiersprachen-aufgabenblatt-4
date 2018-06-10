@@ -264,6 +264,17 @@ class List
         }
     }
 
+    // Aufgabe 4.6
+    ListIterator<T> begin() const
+    {
+        return ListIterator<T>(first_);
+    }
+
+    ListIterator<T> end() const
+    {
+        return ListIterator<T>(nullptr);
+    }
+
 
 
 
